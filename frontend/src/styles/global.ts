@@ -7,8 +7,8 @@ export default createGlobalStyle`
   box-sizing: border-box;
 }
 body{
-  background: #312E38;
-  color: #FFF;
+  background: white;
+  color: #181515;
   -webkit-font-smooting: antialiased;
 }
 body, input, button{
