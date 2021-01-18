@@ -1,25 +1,48 @@
 import React from 'react';
-import { HeaderProducts } from './style';
+import {
+  HeaderProducts,
+  Container,
+  TitleHeader,
+  ContainerProducts,
+} from './style';
+import img from '../../assets/image-placeholder.png';
+import ItemProduct from '../../components/ItemProduct';
+
+export interface IProduct {
+  desc: string;
+  price: number;
+  image: string;
+}
+
+const data:IProduct[] = [
+  {
+    desc: 'Nome do produto com até duas linhasdasdsa',
+    price: 39.99,
+    image: img,
+  },
+  {
+    desc: 'Nome do produto com até duas linhasdasdsa',
+    price: 39.99,
+    image: img,
+  },
+  {
+    desc: 'Nome do produto com até duas linhasdasdsa',
+    price: 39.98,
+    image: img,
+  },
+];
 
 const Home: React.FC = () => (
-  <>
+  <Container>
     <HeaderProducts>
-      <h1>Produtos</h1>
+      <TitleHeader>Produtos</TitleHeader>
     </HeaderProducts>
-    <section>
-      <picture>
-        <img src="" alt="" />
-      </picture>
-      <div>
-        <p>
-          Nome do produto com até duas linhasdasdsa
-        </p>
-        <span>
-          1 x R$39,99
-        </span>
-      </div>
-    </section>
-  </>
+    <ContainerProducts>
+      {data.length > 0 && data.map(({ desc, price, image }) => (
+        <ItemProduct desc={desc} price={price} image={image} />
+      ))}
+    </ContainerProducts>
+  </Container>
 );
 
 export default Home;
