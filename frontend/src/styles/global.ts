@@ -7,7 +7,7 @@ export default createGlobalStyle`
   box-sizing: border-box;
 }
 body{
-background: #f7fff7;
+background: #edf6f9;
 color: #ff6b6b;
   -webkit-font-smooting: antialiased;
   max-width: 800px;

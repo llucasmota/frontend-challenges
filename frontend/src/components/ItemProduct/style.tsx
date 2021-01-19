@@ -4,6 +4,7 @@ export const ContainerItemProduct = styled.section`
 display: flex;
 flex-direction: row;
 align-items: center;
+height: 100px;
 padding-bottom: 10px;
 margin-right: 10px;
 padding-top: 5px;

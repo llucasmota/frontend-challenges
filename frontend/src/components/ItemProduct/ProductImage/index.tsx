@@ -2,13 +2,10 @@ import React from 'react';
 import { ContainerImageProduct, ImageProduct } from './style';
 import img from '../../../assets/image-placeholder.png';
 
-interface IImage {
-  image: string;
-}
-
-const ProductImage: React.FC<IImage> = ({ image }) => (
+const ProductImage: React.FC<{imageUrl: string}> = ({ imageUrl }) => (
   <ContainerImageProduct>
-    <ImageProduct src={image} alt="product" />
+    {imageUrl === null ? (<ImageProduct src={img} />) : <ImageProduct src={imageUrl} />}
+
   </ContainerImageProduct>
 );
 
