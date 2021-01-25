@@ -1,7 +1,8 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const Container = styled.div`
-margin-left: 10px;
+  margin-left: 10px;
 `;
 
 export const HeaderProducts = styled.header`
@@ -10,45 +11,44 @@ export const HeaderProducts = styled.header`
   margin: 30px 0 30px 10px;
 `;
 
-export const TitleHeader = styled.h1`
-`;
+export const TitleHeader = styled.h1``;
 export const ContainerProducts = styled.div``;
 
 export const ItemProduct = styled.section`
-display: flex;
-flex-direction: row;
-align-items: center;
-padding-bottom: 10px;
-margin-right: 10px;
-padding-top: 5px;
-box-shadow: 5px 5px 5px #1a535c;
-background: #4ecdc4;
-color: #1a535c;
-& + section {
-  margin-top: 10px;
-}
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-bottom: 10px;
+  margin-right: 10px;
+  padding-top: 5px;
+  box-shadow: 5px 5px 5px #1a535c;
+  background: #4ecdc4;
+  color: #1a535c;
+`;
+
+export const LinkProducts = styled(Link)`
+  margin-bottom: 10px;
 `;
 
 export const ContainerImageProduct = styled.picture`
-margin: 5px 10px 5px 10px;
-width: 50px;
-height: 50px;
+  margin: 5px 10px 5px 10px;
+  width: 50px;
+  height: 50px;
 `;
 
-export const ProductImage = styled.img`
-`;
+export const ProductImage = styled.img``;
 
 export const ContainerInfoProduct = styled.div`
-display: flex;
-flex-direction: column;
-justify-content: center;
-& > span{
-  margin-top: 2px;
-  & > sup{
-font-size: 10px
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  & > span {
+    margin-top: 2px;
+    & > sup {
+      font-size: 10px;
+    }
   }
-}
-&>p{
-  margin-top: 2px;
-}
+  & > p {
+    margin-top: 2px;
+  }
 `;
