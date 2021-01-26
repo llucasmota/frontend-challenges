@@ -17,6 +17,9 @@ body, input, button{
   font-family: 'Rubik', sans-serif;
   font-size: 16px;
 }
+a{
+  text-decoration: none;
+}
 p{
   font-size: 15px;
 }

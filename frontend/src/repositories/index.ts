@@ -13,3 +13,15 @@ export const GET_ALL_PRODUCTS = gql`
     }
   }
 `;
+
+// export const GET_PRODUCTS_BY_ID = gql`
+//   query($id: Int) {
+//     allSkus($id: Int) {
+//       id
+//       name
+//       imageUrl
+//       salePrice
+//       promotionalPrice
+//     }
+//   }
+// `;

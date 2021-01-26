@@ -4,13 +4,8 @@ import { Link } from 'react-router-dom';
 
 import { useLazyQuery } from '@apollo/client';
 import { GET_ALL_PRODUCTS } from '../../repositories/index';
-import {
-  HeaderProducts,
-  Container,
-  TitleHeader,
-  ContainerProducts,
-  LinkProducts,
-} from './style';
+import { Container, ContainerProducts, LinkProducts } from './style';
+import Header from '../../components/Header';
 import ItemProduct from '../../components/ItemProduct';
 
 interface IProducts {
@@ -70,9 +65,7 @@ const Home: React.FC = () => {
 
   return (
     <Container>
-      <HeaderProducts>
-        <TitleHeader>Produtos</TitleHeader>
-      </HeaderProducts>
+      <Header title="Produtos" />
       {loading}
       <ContainerProducts>
         {!loading &&
