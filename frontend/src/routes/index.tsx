@@ -6,7 +6,7 @@ import Products from '../pages/Products';
 const Routes: React.FC = () => (
   <Switch>
     <Route path="/" exact component={Home} />
-    <Route path="/products" component={Products} />
+    <Route path="/products/:id" component={Products} />
   </Switch>
 );
 

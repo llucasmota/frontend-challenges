@@ -1,5 +1,4 @@
 import { gql, useQuery } from '@apollo/client';
-import React from 'react';
 import { clientGraphql } from '../services/index';
 
 export const GET_ALL_PRODUCTS = gql`
@@ -14,14 +13,17 @@ export const GET_ALL_PRODUCTS = gql`
   }
 `;
 
-// export const GET_PRODUCTS_BY_ID = gql`
-//   query($id: Int) {
-//     allSkus($id: Int) {
-//       id
-//       name
-//       imageUrl
-//       salePrice
-//       promotionalPrice
-//     }
-//   }
-// `;
+export const GET_PRODUCTS_BY_ID = gql`
+  query($prodId: ID!) {
+    Sku(id: $prodId) {
+      id
+      name
+      description
+      imageUrl
+      package
+      salePrice
+      promotionalPrice
+      quantity
+    }
+  }
+`;

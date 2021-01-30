@@ -2,7 +2,6 @@ import React, {
   InputHTMLAttributes,
   useRef,
   useCallback,
-  useEffect,
   useState,
 } from 'react';
 import { IconBaseProps } from 'react-icons';
@@ -29,6 +28,7 @@ const Input: React.FC<InputProps> = ({ name, type, placeholder, ...rest }) => {
   return (
     <Container>
       <span>{name}</span>
+
       <input
         ref={inputRef}
         onFocus={() => setIsFocused(true)}

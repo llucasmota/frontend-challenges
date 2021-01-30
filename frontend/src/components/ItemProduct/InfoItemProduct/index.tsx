@@ -8,15 +8,17 @@ interface IInfoItemProduct {
 }
 
 const InfoItemProduct: React.FC<IInfoItemProduct> = ({ name, salePrice }) => {
-  const newSalePrice = salePrice.toLocaleString('pt-br', {
-    minimumFractionDigits: 2,
-  });
+  const newSalePrice = new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL',
+  }).format(salePrice);
   const [firstPrice, subPrice] = newSalePrice.split(',');
+
   return (
     <ContainerInfoProduct>
       <p>{name}</p>
       <span>
-        {' 1 x R$ '} {firstPrice}, <sup>{subPrice}</sup>
+        {' 1 x '} {firstPrice}, <sup>{subPrice}</sup>
       </span>
     </ContainerInfoProduct>
   );

@@ -30,20 +30,23 @@ const Home: React.FC = () => {
       setScrollRatio(radio);
     },
   );
+  useEffect(() => {
+    return () =>
+      loadAllProducts({
+        variables: { page, perPage },
+      });
+  }, []);
 
   const [loadAllProducts, { loading }] = useLazyQuery(GET_ALL_PRODUCTS, {
     onError: () => setError(true),
     onCompleted: data => {
       const { allSkus } = data;
-      !loading && setProducts([...products, ...allSkus]);
+      const prod = [...products];
+      const newData = prod.concat(...allSkus);
+
+      !loading && setProducts([...newData]);
     },
   });
-
-  useEffect(() => {
-    loadAllProducts({
-      variables: { page, perPage },
-    });
-  }, []);
 
   useEffect(() => {
     if (scrollRatio > 0) {
@@ -54,7 +57,6 @@ const Home: React.FC = () => {
       });
     }
   }, [scrollRatio]);
-  // montagem inicial
 
   useEffect(() => {
     intersectionObserver.observe(intersectionRef.current);
@@ -67,10 +69,11 @@ const Home: React.FC = () => {
     <Container>
       <Header title="Produtos" />
       {loading}
+      <p>{products.length}</p>
       <ContainerProducts>
         {!loading &&
-          products.map(({ id, name, salePrice, imageUrl }) => (
-            <LinkProducts key={id} to={`/products/${id}`}>
+          products.sort().map(({ id, name, salePrice, imageUrl }) => (
+            <LinkProducts key={id} to={`products/${id}`}>
               <ItemProduct
                 key={id}
                 id={id}
@@ -78,10 +81,11 @@ const Home: React.FC = () => {
                 salePrice={salePrice}
                 imageUrl={imageUrl}
               />
+              <span>{id}</span>
             </LinkProducts>
           ))}
       </ContainerProducts>
-      {loading && <div>Carregando</div>}
+      {}
       <div ref={intersectionRef} key="ref" />
     </Container>
   );

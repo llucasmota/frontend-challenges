@@ -7,12 +7,12 @@ import { clientGraphql } from './services/index';
 import Routes from './routes';
 
 const App: React.FC = () => (
-  <ApolloProvider client={clientGraphql}>
-    <Router>
+  <Router>
+    <ApolloProvider client={clientGraphql}>
       <Routes />
       <GlobalStyle />
-    </Router>
-  </ApolloProvider>
+    </ApolloProvider>
+  </Router>
 );
 
 export default App;
