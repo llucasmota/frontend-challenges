@@ -12,9 +12,16 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   name?: string;
   type: string;
   placeholder: string;
+  title?: string;
 }
 
-const Input: React.FC<InputProps> = ({ name, type, placeholder, ...rest }) => {
+const Input: React.FC<InputProps> = ({
+  name,
+  type,
+  placeholder,
+  title,
+  ...rest
+}) => {
   // const { fieldName, defaultValue, registerField } = useField(name);
   const [isFocused, setIsFocused] = useState(false);
   const [isFiled, setIsFilled] = useState(false);
@@ -27,7 +34,7 @@ const Input: React.FC<InputProps> = ({ name, type, placeholder, ...rest }) => {
 
   return (
     <Container>
-      <span>{name}</span>
+      <span>{title}</span>
 
       <input
         ref={inputRef}
@@ -35,6 +42,8 @@ const Input: React.FC<InputProps> = ({ name, type, placeholder, ...rest }) => {
         onBlur={handleInputBlur}
         type={type}
         placeholder={placeholder}
+        name={name}
+        key={name}
         {...rest}
       />
     </Container>

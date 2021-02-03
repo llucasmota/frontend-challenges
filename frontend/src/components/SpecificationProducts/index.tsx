@@ -6,16 +6,18 @@ import Input from '../Input';
 interface ISpecificationProducts {
   label: string;
   unity: string;
+  name: string;
 }
 
 const SpecificationProduct: React.FC<ISpecificationProducts> = ({
   label,
   unity,
+  name,
 }) => {
   return (
     <ContainerItems>
       <p>{label}</p>
-      <Input type="number" placeholder="" />
+      <Input type="number" placeholder="" name={name} />
       <span>{unity}</span>
     </ContainerItems>
   );
