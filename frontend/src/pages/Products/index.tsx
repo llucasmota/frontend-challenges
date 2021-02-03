@@ -65,6 +65,8 @@ const Products = ({ match }: RouteComponentProps<TParams>) => {
   const [products, setProducts] = useState({});
   const [error, setError] = useState(false);
   const [estoque, setEstoque] = useState(0);
+  const [salePrice, setSalePrice] = useState(0);
+  const [promotionalPrice, setPromotionalPrice] = useState(0);
   const [product, setProduct] = useState<IProduct>({} as IProduct);
 
   const { id } = match.params;
@@ -80,8 +82,13 @@ const Products = ({ match }: RouteComponentProps<TParams>) => {
     loadProductsById({
       variables: { prodId: id },
     });
-    return () => setEstoque(product.quantity);
   }, [id]);
+
+  useEffect(() => {
+    setEstoque(product.quantity);
+    setSalePrice(product.salePrice);
+    setPromotionalPrice(product.promotionalPrice);
+  }, [product]);
 
   const handleInputEstoque = (e: React.FormEvent<HTMLInputElement>) => {
     setEstoque(parseInt(e.currentTarget.value, 10));
@@ -99,12 +106,14 @@ const Products = ({ match }: RouteComponentProps<TParams>) => {
       setEstoque(estoqueCopia);
     }
   };
+  const handleInputSalePrice = (e: React.FormEvent<HTMLInputElement>) => {
+    setSalePrice(parseInt(e.currentTarget.value, 10));
+  };
 
-  const unescapeHTML = (escapedHTML: string) => {
-    return escapedHTML
-      .replace(/&lt;/g, '<')
-      .replace(/&gt;/g, '>')
-      .replace(/&amp;/g, '&');
+  const handleInputPromotionalPrice = (
+    e: React.FormEvent<HTMLInputElement>,
+  ) => {
+    setPromotionalPrice(parseInt(e.currentTarget.value, 10));
   };
 
   // const handleInput = e => {
@@ -136,6 +145,7 @@ const Products = ({ match }: RouteComponentProps<TParams>) => {
             placeholder=""
             name="quantity"
             value={estoque}
+            defaultValue={estoque}
             onChange={handleInputEstoque}
           />
           <button
@@ -157,6 +167,9 @@ const Products = ({ match }: RouteComponentProps<TParams>) => {
             type="number"
             placeholder="R$"
             name="salePrice"
+            value={salePrice}
+            defaultValue={salePrice}
+            onChange={handleInputSalePrice}
           />
           <Input
             title="Preço promocional"
@@ -165,6 +178,9 @@ const Products = ({ match }: RouteComponentProps<TParams>) => {
             step="0.01"
             min="0.01"
             name="promotionalPrice"
+            value={promotionalPrice}
+            defaultValue={promotionalPrice}
+            onChange={handleInputPromotionalPrice}
           />
         </ContainerInputs>
         <Container>
